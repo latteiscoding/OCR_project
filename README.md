@@ -43,11 +43,11 @@ gcloud init
    
    We recommend choosing **user accounts** for the authentication and the corresponding steps are as below. Feel free to go through the documents above if you prefer other authentications.
    #### Authentication with user accounts
-   We are going to choose client library user account authentication here, if you prefer *REST command line user account authentication*, click [here](https://cloud.google.com/vision/docs/setup#rest-command-line-user-account-authentication).
+   <u>We are going to choose client library user account authentication here</u>, if you prefer *REST command line user account authentication*, click [here](https://cloud.google.com/vision/docs/setup#rest-command-line-user-account-authentication).
    ##### Client library user account authentication
    To authenticate for client library calls, you use the gcloud CLI. The `gcloud auth application-default login` command logs you in to gcloud for application default credentials with your user account, which should be done before calling the API. The `gcloud auth application-default set-quota-project` command must be used to set your project for billing and quotas related to API calls. Normally, this is the same project used by your agent, and you supply the project ID for the project you created in steps above.
 
-   The `GOOGLE_APPLICATION_CREDENTIALS` environment variable must not be set in order for your application default credentials to be used by client libraries.
+   The `GOOGLE_APPLICATION_CREDENTIALS` environment variable must **NOT** be set in order for your application default credentials to be used by client libraries.
 
    To create application default credentials for your local environment:
    ```
