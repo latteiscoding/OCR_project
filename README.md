@@ -19,10 +19,27 @@ Utilizes Google Cloud Vision API for high-accuracy OCR.
 pip install pandas pdf2image
 ```
 3. Install Poppler (required by pdf2image for PDF processing) for your operating system
-   #### For Windows
-   1. Download Poppler: Go to a source for Poppler binaries such as http://blog.alivate.com.au/poppler-windows/ or search for "Poppler for Windows" for other sources. Download the latest version.
-   2. Extract the Zip File: Extract the downloaded zip file to a directory of your choice, e.g., C:\Program Files\poppler-xx\.
-   3. Add to PATH: Add the bin directory inside your Poppler directory to your system's PATH environment variable. This enables commands like pdftoppm and pdfimages to be recognized in your command line.
+   ### For Windows
+   Compared to downloading zip file and adding it to PATH, Anaconda is recommended to install Poppler.
+   > Additional Notes: 1. Environment: It's a good practice to create a new conda environment for each project to manage dependencies more effectively. If you're working within a specific conda environment, make sure to activate it before installing Poppler with the command `conda activate your_environment_name`. 2. Updating Conda: It's also a good idea to ensure your conda installation is up to date before installing new packages. You can update conda by running `conda update -n base -c defaults conda`.
+   #### Step 1: Open Anaconda Prompt
+   Find the Anaconda Prompt from your Start menu and open it. It's recommended to run it as an administrator to avoid permission issues during the installation process.
+   #### Step 2: Search for Poppler Package
+   First, you might want to search for the available Poppler packages in the Anaconda repositories. You can do this by executing the following command:
+   ```
+   conda search poppler
+   ```
+   This command will list all the versions of Poppler available for installation via Anaconda.
+   #### Step 3: Install Poppler
+   Install Poppler by running the following command:
+   ```
+   conda install -c conda-forge poppler
+   ```
+   #### Step 4: Verify Installation
+   After the installation completes, you can verify that Poppler has been installed correctly by checking its version. Type the following command in the Anaconda Prompt:
+   ```
+   poppler-utils --version
+   ```
 
 ### Google Cloud Vision setup
 For details, click [here](https://cloud.google.com/vision/docs/setup) for Complete document for Cloud Vision setup and cleanup.
@@ -32,10 +49,9 @@ For details, click [here](https://cloud.google.com/vision/docs/setup) for Comple
    The following link provides instructions:
 
    [Install](https://cloud.google.com/sdk/docs/install) the Google Cloud CLI, then [initialize](https://cloud.google.com/sdk/docs/initializing) it by running the following command:
-   
-```
-gcloud init
-```
+   ```
+   gcloud init
+   ```
 4. Set up authentication and access control
   If you plan to use the Vision API, you need to set up authentication. Any client application that uses the API must be authenticated and granted access to the requested resources. This section describes important authentication concepts and provides steps for setting it up. For more information, see the [Google Cloud authentication overview](https://cloud.google.com/docs/authentication).
 
