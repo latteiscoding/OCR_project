@@ -4,7 +4,7 @@ from google.cloud import vision
 import sys
 import pathlib
 from pdf2image import convert_from_path
-import os
+import io
 
 #========================================
 # Function to extract text within specified bounds from a document.
@@ -47,14 +47,10 @@ def text_within(document, x1, y1, x2, y2):
 # Parameters:
 # - path: Path to the image file.
 # Returns: The response from the text detection API call.
-def detect_text(path):
+def detect_text(image_content):
     """Detects text in the file."""
     client = vision.ImageAnnotatorClient()
-
-    with open(path, "rb") as image_file:
-        content = image_file.read()
-
-    image = vision.Image(content=content)
+    image = vision.Image(content=image_content)
     response = client.text_detection(image=image)
 
     if response.error.message:
@@ -75,16 +71,18 @@ def pdf_to_text(path):
         sys.exit("Invalid PDF path")
     
     # Convert PDF pages to images
-    images = convert_from_path(str(pdf_path.resolve()), dpi=80)
+    images = convert_from_path(str(pdf_path.resolve()), dpi=40)
     all_results = []
     for img in images:
-        img.save("temp_image.png", "PNG")
-        # Extract text from the temporary image file
-        raw_response = detect_text("temp_image.png")
+        # Convert image to bytes
+        img_byte_arr = io.BytesIO()
+        img.save(img_byte_arr, format='PNG')
+        img_byte_arr = img_byte_arr.getvalue()
+
+        # Extract text from the image bytes
+        raw_response = detect_text(img_byte_arr)
         # Append the results for this page to all_results
         all_results.append(raw_response)
-    # Remove the temporary image file
-    os.remove("temp_image.png")
     return all_results
 
 # Function to format detected text from all pages into a pandas DataFrame
@@ -125,7 +123,7 @@ def pdf_to_xlsx(path, bounds, out_path):
 def main():
     # Sample usage: Convert a sample PDF to an Excel file
     print("Start converting...")
-    bounds = [[0, 0, 1300, 10000], [1400, 0, 2000, 10000], [1880, 0, 9999, 10000]]
+    bounds = [[0, 0, 1300/2, 10000], [1400/2, 0, 2000/2, 10000], [1880/2, 0, 9999, 10000]]
     input_path = "files/sample.pdf"
     output_path = "out/sample_out.xlsx"
     pdf_to_xlsx(input_path, bounds, output_path)
