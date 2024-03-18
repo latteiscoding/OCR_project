@@ -18,7 +18,11 @@ Utilizes Google Cloud Vision API for high-accuracy OCR.
 ```
 pip install pandas pdf2image
 ```
-3. Install Poppler (required by pdf2image for PDF processing) for your operating system.<?>
+3. Install Poppler (required by pdf2image for PDF processing) for your operating system
+   #### For Windows
+   1. Download Poppler: Go to a source for Poppler binaries such as http://blog.alivate.com.au/poppler-windows/ or search for "Poppler for Windows" for other sources. Download the latest version.
+   2. Extract the Zip File: Extract the downloaded zip file to a directory of your choice, e.g., C:\Program Files\poppler-xx\.
+   3. Add to PATH: Add the bin directory inside your Poppler directory to your system's PATH environment variable. This enables commands like pdftoppm and pdfimages to be recognized in your command line.
 
 ### Google Cloud Vision setup
 For details, click [here](https://cloud.google.com/vision/docs/setup) for Complete document for Cloud Vision setup and cleanup.
@@ -68,6 +72,15 @@ gcloud init
    ```
    A sign-in screen appears. After you sign in, your credentials are stored in the [local credential file used by ADC](https://cloud.google.com/docs/authentication/application-default-credentials#personal).
 
+## Usage
+### Function Setup
+- Change the `input_path` to the path of the pdf to be converted. Similiarly, Change `output_path` to the desired output file path.
+- The function comes with a default scanning boundary. Feel free to tune `bounds` to fit your own needs.
+### Run the function
+After setting up everything above, we can now convert a scanned PDF to an Excel file by simply running the script with the following command:
+```
+python OCR_deliverable.py
+```
 
 ## Contact
 For support or queries, contact zjg.elaine@gmail.com / bjwq2019@gmail.com
