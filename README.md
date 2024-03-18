@@ -57,6 +57,11 @@ gcloud init
 
 6. Install the Vision API client library
    #### Install the client library
+   * You might get error message if your pip is not up-to-date. Update pip using the following command:
+   ```
+   pip install --upgrade pip   
+   ```
+   Install the client library using the following command:
    ```
    pip install --upgrade google-cloud-vision
    ```
