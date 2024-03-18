@@ -1,6 +1,6 @@
 # OCR_project
 
-## Project Description
+## I. Project Description
 This Python application automates the extraction of text from scanned PDF files and organizes the extracted text into xls format. Leveraging the powerful OCR capabilities of **Google Cloud Vision API**, it provides an efficient solution for converting scanned documents into editable text, suitable for data analysis and archival purposes.
 
 ### Features
@@ -12,7 +12,7 @@ Utilizes Google Cloud Vision API for high-accuracy OCR.
 - Google Cloud account with Vision API enabled
 - Required Python packages: pandas, google-cloud-vision, pdf2image
 
-## Environment Setup
+## II. Environment Setup
 1. Ensure Python of supported version is installed on your system.
 2. Install the necessary Python libraries if you do not have them by running:
 ```
@@ -36,7 +36,7 @@ For details, click [here](https://cloud.google.com/vision/docs/setup) for Comple
 ```
 gcloud init
 ```
-5. Set up authentication and access control
+4. Set up authentication and access control
   If you plan to use the Vision API, you need to set up authentication. Any client application that uses the API must be authenticated and granted access to the requested resources. This section describes important authentication concepts and provides steps for setting it up. For more information, see the [Google Cloud authentication overview](https://cloud.google.com/docs/authentication).
 
    Generally there are 3 options for authentication: [Authentication with user accounts](https://cloud.google.com/vision/docs/setup#user), [Authentication with service accounts](https://cloud.google.com/vision/docs/setup#sa), [Access control with roles](https://cloud.google.com/vision/docs/setup#role).
@@ -55,9 +55,10 @@ gcloud init
    gcloud auth application-default set-quota-project PROJECT_ID
    ```
 
-6. Install the Vision API client library
+5. Install the Vision API client library
    #### Install the client library
-   * You might get error message if your pip is not up-to-date. Update pip using the following command:
+   >You might get error message if your pip is not up-to-date.
+   Update pip using the following command:
    ```
    pip install --upgrade pip   
    ```
@@ -77,7 +78,7 @@ gcloud init
    ```
    A sign-in screen appears. After you sign in, your credentials are stored in the [local credential file used by ADC](https://cloud.google.com/docs/authentication/application-default-credentials#personal).
 
-## Usage
+## III. Usage
 ### Function Setup
 - Change the `input_path` to the path of the pdf to be converted. Similiarly, Change `output_path` to the desired output file path.
 - The function comes with a default scanning boundary. Feel free to tune `bounds` to fit your own needs.
@@ -87,5 +88,5 @@ After setting up everything above, we can now convert a scanned PDF to an Excel 
 python OCR_deliverable.py
 ```
 
-## Contact
+## IV. Contact
 For support or queries, contact zjg.elaine@gmail.com / bjwq2019@gmail.com
