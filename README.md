@@ -29,9 +29,9 @@ For details, click [here](https://cloud.google.com/vision/docs/setup) for Comple
 
    [Install](https://cloud.google.com/sdk/docs/install) the Google Cloud CLI, then [initialize](https://cloud.google.com/sdk/docs/initializing) it by running the following command:
    
-```
-gcloud init
-```
+   ```
+   gcloud init
+   ```
 5. Set up authentication and access control
   If you plan to use the Vision API, you need to set up authentication. Any client application that uses the API must be authenticated and granted access to the requested resources. This section describes important authentication concepts and provides steps for setting it up. For more information, see the [Google Cloud authentication overview](https://cloud.google.com/docs/authentication).
 
